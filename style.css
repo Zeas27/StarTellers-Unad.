@@ -1,0 +1,92 @@
+
+:root{
+  --bg-color:#f7f3ec;
+  --paper:#fbf7ee;
+  --accent1:#4a90e2;
+  --gold1: rgba(255, 200, 50, 0.95);
+  --text:#222;
+  --muted:#666;
+  --maxw:1000px;
+  --shadow: 0 10px 30px rgba(0,0,0,0.15);
+  font-family: 'Poppins', sans-serif;
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg-color);color:var(--text);font-family:var(--font);-webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
+
+/* HERO / PORTADA */
+.hero{
+  min-height:100vh;
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+}
+.hero .overlay{
+  position:absolute;inset:0;background:rgba(0,0,0,0.35);
+}
+.hero-content{
+  position:relative;z-index:2;text-align:center;color:white;padding:30px;border-radius:12px;
+  max-width:900px;
+}
+.title{
+  font-size:2.2rem;margin:0 0 10px;letter-spacing:0.6px;text-shadow:0 6px 18px rgba(0,0,0,0.45);
+}
+.subtitle{margin:0 0 20px;font-weight:300;opacity:0.95}
+.hero-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn{
+  display:inline-block;padding:12px 24px;border-radius:30px;text-decoration:none;font-weight:600;box-shadow:var(--shadow);transition:transform .18s ease, box-shadow .18s ease;
+}
+.btn.primary{
+  background: linear-gradient(90deg, rgba(255,210,80,0.95), rgba(255,170,50,0.95));
+  color:#2a2a2a;
+  border:1px solid rgba(255,200,60,0.6);
+  position:relative;
+  overflow:hidden;
+}
+.btn.secondary{
+  background: rgba(255,255,255,0.08);
+  color:white;
+  border:1px solid rgba(255,255,255,0.12);
+}
+
+/* resplandor dorado */
+.btn.primary::after{
+  content:'';position:absolute;inset:0;border-radius:30px;box-shadow:0 0 40px rgba(255,200,60,0);transition:box-shadow .25s ease;
+}
+.btn.primary:hover::after{box-shadow:0 0 40px rgba(255,200,60,0.45)}
+.btn.primary:hover{transform:translateY(-4px)}
+
+/* CUENTO - contenedor estilo libro antiguo */
+.header-small{display:flex;justify-content:space-between;align-items:center;padding:18px 28px;background:linear-gradient(90deg,#ffffff, #f6f2e8);box-shadow:0 4px 10px rgba(0,0,0,0.06)}
+.header-small h1{font-size:1.05rem;margin:0;font-weight:600}
+.header-small .btn.small{padding:8px 12px;border-radius:8px; text-decoration:none;background:linear-gradient(90deg,#6a5acd,#4a90e2);color:white;}
+
+/* Book */
+.book-container{max-width:var(--maxw);margin:36px auto;padding:20px;display:flex;flex-direction:column;gap:18px;align-items:center}
+#pages{width:100%;min-height:420px;position:relative}
+.page{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .5s ease, transform .5s ease;display:flex;align-items:center;justify-content:center;padding:30px}
+.page.active{opacity:1;pointer-events:auto}
+.page-inner{background:var(--paper);border-radius:12px;padding:28px;box-shadow:var(--shadow);display:flex;gap:24px;align-items:center;max-width:1000px}
+.page-text{flex:1;min-width:220px}
+.page-text h2{margin-top:0;color:var(--accent1)}
+.page-text p{color:var(--muted);line-height:1.7;font-size:1.05rem}
+.page-image{width:360px;flex-shrink:0}
+.page-image img{width:100%;height:auto;border-radius:8px;display:block;box-shadow:0 8px 24px rgba(0,0,0,0.12)}
+
+/* controls */
+.controls{display:flex;gap:12px;align-items:center;justify-content:center;margin-top:8px}
+.nav-btn{padding:10px 16px;border-radius:8px;border:0;background:#6a5acd;color:white;cursor:pointer;font-weight:600;box-shadow:0 6px 18px rgba(0,0,0,0.12)}
+#page-indicator{color:var(--muted)}
+
+/* footer */
+.footer{text-align:center;padding:20px;color:var(--muted);font-size:0.95rem}
+
+/* responsive */
+@media (max-width:900px){
+  .page-inner{flex-direction:column}
+  .page-image{width:85%}
+  .title{font-size:1.8rem}
+}
